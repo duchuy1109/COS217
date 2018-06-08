@@ -1,0 +1,54 @@
+echo "*** EXTERNAL COMMANDS"
+/bin/date
+date
+pwd
+ls
+ls -al
+echo
+echo one two three
+echo one "two   three" four
+printenv
+printenv PATH
+printenv HOME
+
+echo "*** SHELL BUILTIN COMMANDS (cd, setenv, unsetenv)"
+cd /usr
+pwd
+cd bin
+pwd
+cd
+pwd
+setenv XXX 123
+printenv
+printenv XXX
+unsetenv XXX
+printenv
+printenv XXX
+
+echo "*** REDIRECTION"
+pwd > junk
+cat junk
+cat < junk
+cat < junk > junk2
+cat junk2
+cat > junk3 < junk2
+cat junk3
+cat junk2 > junk4 junk3
+cat junk4
+rm junk junk2 junk3 junk4
+
+echo "*** ERRONEOUS COMMANDS"
+echo "one
+cd dir1 dir2
+setenv
+unsetenv
+echo one >
+echo one > junk1 > junk2
+cat < nosuchfile
+nosuchcommand
+
+echo "*** UNUSUAL COMMANDS"
+echo one ">" junk
+echo one > ">"
+cat ">"
+rm ">"
